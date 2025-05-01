@@ -128,7 +128,7 @@ namespace PlayerManager2 // >>> Change to PlayerManager2 for exercise 4 <<< //
             // /////////////////// //
             foreach(Player p in playersToList)
             {
-                Console.WriteLine($"{p.GetType().Name}, {p.Score}");
+                Console.WriteLine($"{p.Name}, {p.Score}");
             }
         }
 
@@ -145,7 +145,7 @@ namespace PlayerManager2 // >>> Change to PlayerManager2 for exercise 4 <<< //
 
             foreach(Player gp in GetPlayersWithScoreGreaterThan(input_minscore))
             {
-                Console.WriteLine($"{gp.GetType().Name}, {gp.Score}");
+                Console.WriteLine($"{gp.Name}, {gp.Score}");
             }
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
 
-namespace PlayerManager3 // >>> Change to PlayerManager2 for exercise 4 <<< //
+namespace PlayerManager4 // >>> Change to PlayerManager2 for exercise 4 <<< //
 {
     /// <summary>
     /// The player listing program.
@@ -61,8 +61,39 @@ namespace PlayerManager3 // >>> Change to PlayerManager2 for exercise 4 <<< //
                         InsertPlayer();
                         break;
                     case "2":
-                        playerList.Sort();
-                        ListPlayers(playerList);
+                        string sort_input;
+                        bool orderoption = true;
+                        Console.WriteLine("Insert sort option:");
+                        Console.WriteLine("1-By name ascending");
+                        Console.WriteLine("2-By name descending");
+                        Console.WriteLine("3-By score descending(default)");
+                        sort_input = Console.ReadLine();
+                        if (sort_input == "")
+                        {
+                            sort_input = "3";
+                        }
+                        switch (sort_input)
+                        {
+                            case "1":
+                                orderoption = true;
+                                break;
+                            case "2":
+                                orderoption = false;
+                                break;
+                            case "3":
+                                playerList.Sort();
+                                ListPlayers(playerList);
+                                break;
+                        }
+                        if(sort_input == "1"|| sort_input == "2")
+                        {
+                            CompareByName compareByName = new CompareByName(orderoption);
+                            playerList.Sort(compareByName);
+                            foreach(Player sp in playerList)
+                            {
+                                Console.WriteLine($"{sp.Name}, {sp.Score}");
+                            }
+                        }
                         break;
                     case "3":
                         playerList.Sort();
